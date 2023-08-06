@@ -1,10 +1,10 @@
-import "../styles/globals.css";
-import Home from "./index";
+import "@/styles/globals.css";
+import { SessionProvider } from "next-auth/react"
 
-function MyApp() {
+export default function App({Component, pageProps: { session, ...pageProps }}) {
   return (
-    <Home />
-  );
+    <SessionProvider session={session}>
+      <Component {...pageProps}/>
+    </SessionProvider>
+  )
 }
-
-export default MyApp;
